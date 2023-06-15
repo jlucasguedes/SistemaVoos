@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.jlucasguedes.domain.Voo;
 import br.com.jlucasguedes.services.VoosService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/voos")

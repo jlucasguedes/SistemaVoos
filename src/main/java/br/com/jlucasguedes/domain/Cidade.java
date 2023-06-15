@@ -1,14 +1,14 @@
 package br.com.jlucasguedes.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator(name = "cidade_seq_gen", sequenceName = "cidade_id_seq", allocationSize = 1)
@@ -19,7 +19,7 @@ public class Cidade {
 
 	private String nome;
 
-	@ManyToOne
+	@ManyToMany
 	@JoinColumn(name = "estado_id", referencedColumnName = "id")
 	@JsonIgnore
 	private Estado estado;

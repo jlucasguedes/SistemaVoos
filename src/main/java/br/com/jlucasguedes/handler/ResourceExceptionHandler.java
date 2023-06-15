@@ -1,6 +1,6 @@
 package br.com.jlucasguedes.handler;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import br.com.jlucasguedes.domain.DetalhesErro;
 import br.com.jlucasguedes.services.exceptions.CidadeNaoEncontradaException;
 import br.com.jlucasguedes.services.exceptions.VooNaoEncontradoException;
+import jakarta.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
