@@ -1,3 +1,10 @@
 pipeline{
     agent any
+    stages {
+        stage('Test - Unit') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+    }
 }
