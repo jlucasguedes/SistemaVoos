@@ -20,6 +20,13 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
+
+        stage('Performance Tests') {
+            steps {
+                bat 'jmeter -n -t jmeter/planodeteste.xml -l results.jtl'
+                perfReport 'results.jtl'
+            }
+        }
         
     }
 }
