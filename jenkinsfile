@@ -29,13 +29,20 @@ pipeline {
         // }
 
 
-        stage('Static Code Analysis') {
+        // stage('Static Code Analysis') {
+        //     steps {
+        //         withSonarQubeEnv('SonarQube') {
+        //            bat 'mvn sonar:sonar'
+        //         }
+        //     }
+        // }
+
+        stage('Database Migration') {
             steps {
-                withSonarQubeEnv('SonarQube') {
-                   bat 'mvn sonar:sonar'
-                }
+                sh 'flyway migrate'
             }
         }
+
         
     }
 }
