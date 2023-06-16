@@ -90,6 +90,7 @@
 					<url>jdbc:postgresql://localhost:5432/sistema_voos</url>
 					<user>postgres</user>
 					<password>123</password>
+					<cleanDisabled>false</cleanDisabled>
 				</configuration>
 			</plugin>
 		</plugins>

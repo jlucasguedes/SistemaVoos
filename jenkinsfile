@@ -39,7 +39,7 @@ pipeline {
 
         stage('Database Migration') {
             steps {
-                sh 'flyway migrate'
+                bat 'mvn flyway:migrate'
             }
         }
 
