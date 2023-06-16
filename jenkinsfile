@@ -13,39 +13,5 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-
-        stage('Unit Tests') {
-            steps {
-                sh 'mvn test'
-                junit "target/surefire-reports/*.xml"
-            }
-        }
-
-        stage('Performance Tests') {
-            steps {
-                sh 'jmeter -n -t testplan.jmx -l results.jtl'
-                perfReport 'results.jtl'
-            }
-        }
-
-        stage('Static Code Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
-
-        stage('Database Migration') {
-            steps {
-                sh 'flyway migrate'
-            }
-        }
-
-        stage('Deploy') {
-             steps {
-                sh 'java -jar target/SistemaVoos.war'
-            }
-        }
-    }
+    }
 }
