@@ -27,6 +27,14 @@ pipeline {
                 perfReport 'results.jtl'
             }
         }
+
+        stage('Static Code Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    bat 'mvn sonar:sonar'
+                }
+            }
+        }
         
     }
 }
