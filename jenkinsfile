@@ -8,12 +8,12 @@ pipeline {
             }
         }
 
-        // stage('Unit Tests') {
-        //     steps {
-        //         bat 'mvn test'
-        //         junit '**/target/surefire-reports/**.xml'
-        //     }
-        // }
+        stage('Junit') {
+            steps {
+                bat 'mvn test'
+                junit '**/target/surefire-reports/**.xml'
+            }
+        }
 
         stage('Build') {
             steps {
@@ -21,28 +21,39 @@ pipeline {
             }
         }
 
-        // stage('Performance Tests') {
-        //     steps {
-        //         bat 'jmeter -n -t jmeter/planodeteste.xml -l results.jtl'
-        //         perfReport 'results.jtl'
-        //     }
-        // }
+        stage('Jmeter') {
+            steps {
+                bat 'jmeter -n -t jmeter/planodeteste.xml -l results.jtl'
+                perfReport 'results.jtl'
+            }
+        }
 
 
-        // stage('Static Code Analysis') {
-        //     steps {
-        //         withSonarQubeEnv('SonarQube') {
-        //            bat 'mvn sonar:sonar'
-        //         }
-        //     }
-        // }
+        stage('SonarQube') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                   bat 'mvn sonar:sonar'
+                }
+            }
+        }
 
-        stage('Database Migration') {
+        stage('Flyway') {
             steps {
                 bat 'mvn flyway:migrate'
             }
         }
+    }
+    post {
+        always {
+            echo 'Etapa concluída'
+        }
 
-        
+        success {
+            echo 'Ocorreu tudo com sucesso'
+        }
+
+        failure {
+            echo 'Ocorreu uma falha'
+        }
     }
 }
