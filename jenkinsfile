@@ -44,7 +44,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'copy target\\SistemaVoos.war C:\\SistemaVoos.war'
+                bat 'mvn install -DskipTests'
             }
         }
     }
