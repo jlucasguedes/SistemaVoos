@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -19,7 +19,7 @@ public class Cidade {
 
 	private String nome;
 
-	@ManyToMany
+	@ManyToOne
 	@JoinColumn(name = "estado_id", referencedColumnName = "id")
 	@JsonIgnore
 	private Estado estado;
