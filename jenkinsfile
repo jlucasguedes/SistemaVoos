@@ -44,7 +44,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'java -jar C:\\Users\\lucas\\javaProjects\\SistemaVoos\\target\\SistemaVoos.war'
+                bat 'copy target\\SistemaVoos.war C:\\SistemaVoos.war'
             }
         }
     }
