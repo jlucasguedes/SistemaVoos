@@ -44,7 +44,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'java -jar target/SistemaVoos.war'
+                bat 'java -jar C:/Users/lucas/javaProjects/SistemaVoos/target/SistemaVoos.war'
             }
         }
     }
