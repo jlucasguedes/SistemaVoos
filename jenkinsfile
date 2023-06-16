@@ -28,11 +28,11 @@ pipeline {
             }
         }
 
-        environment {
-            SONAR_TOKEN = credentials('squ_e2f7481a73ff9c329f86bcc40e9a4b6f1e56bcf7')
-        }
 
         stage('Static Code Analysis') {
+            environment {
+                SONAR_TOKEN = credentials('squ_e2f7481a73ff9c329f86bcc40e9a4b6f1e56bcf7')
+            }
             steps {
                 withSonarQubeEnv('SonarQube') {
                    bat "mvn sonar:sonar -Dsonar.login=${env.SONAR_TOKEN}"
