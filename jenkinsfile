@@ -8,10 +8,25 @@ pipeline {
             }
         }
 
+        stage('Unit Tests') {
+            steps {
+                bat 'mvn test'
+                junit '**/target/surefire-reports/**.xml'
+            }
+        }
+
         stage('Build') {
             steps {
                 bat 'mvn clean package'
             }
         }
+
+        stage('Performance Tests') {
+            steps {
+                bat 'jmeter -n -t jmeter/planodeteste.xml -l results.jtl'
+                perfReport 'results.jtl'
+            }
+        }
+        
     }
 }
